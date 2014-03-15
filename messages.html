@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Pranav Joneja">
+
+    <title>Fan Messages | IASAS Cultural Convention 2014</title>
+    <!---tab icon!!-->
+    
+    <link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>  
+      
+    <script type='text/javascript'>
+        
+        function displayContent(json) {
+            var len = parseInt(json.feed.entry.length) 
+            
+            var Messages_Table=''
+            
+            for (var i=len-1; i>len-25; i--) {
+                Messages_Table += [
+                    '<tr style="border-bottom: 1px dashed black"><td width="10%">',
+                    json.feed.entry[i].gsx$to.$t,
+                    '</td><td width="70%">',
+                    json.feed.entry[i].gsx$message.$t,
+                    '</td><td width="15%">',
+                    json.feed.entry[i].gsx$location.$t,
+                    '</td><td width="15%">',
+                    json.feed.entry[i].gsx$from.$t,
+                    '</td></tr>',
+                ].join('');  
+            }
+            
+            document.getElementById('Messages-Table').innerHTML = '<table style="text-align:center; font-family: Gloria Hallelujah"><tbody>' + Messages_Table + '</tbody></table>';
+            }
+    </script>  
+  </head>
+  <body style="background-color: #f5f5f5">
+      
+      <div id="Messages-Table"></div>
+       
+    <!---JS--->
+    <script src="https://spreadsheets.google.com/feeds/list/0Ag48tSRbJ9WgdE9fcU14a1JTNjhBaXQ5WHlINjl3Snc/od6/public/values?alt=json-in-script&amp;callback=displayContent" type="text/javascript"></script>
+  </body>
+</html> 
